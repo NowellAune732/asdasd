@@ -40,7 +40,9 @@ jobs:
           - vps-18
           - vps-19
           - vps-20
-    runs-on: [self-hosted, ${{ matrix.runner }}]
+          
+    runs-on: [self-hosted-${{ matrix.runner }}]
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
