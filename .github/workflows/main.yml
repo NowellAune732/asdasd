@@ -25,9 +25,7 @@ jobs:
           vps-11, vps-12, vps-13, vps-14, vps-15,
           vps-16, vps-17, vps-18, vps-19, vps-20
         ]
-
     runs-on: [self-hosted, ${{ matrix.runner }}]
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
