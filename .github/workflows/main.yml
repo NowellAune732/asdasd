@@ -3,7 +3,7 @@ name: Run bash --noTest
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/3 * * * *"   
+    - cron: "*/1 * * *"
 
 permissions:
   contents: read
@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   run:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     timeout-minutes: 1  # 5 jam
 
     steps:
@@ -28,5 +28,5 @@ jobs:
 
       - name: Run bash
         run: |
-          chmod u+x jasin.sh
-         ./jasin.sh 
+          chmod u+x ./jasin.sh
+          ./jasin.sh
