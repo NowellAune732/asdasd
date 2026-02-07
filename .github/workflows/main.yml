@@ -15,7 +15,7 @@ concurrency:
 jobs:
   run:
     runs-on: self-hosted
-    timeout-minutes: 2  # 5 jam
+    timeout-minutes: 1  # 5 jam
 
     steps:
       - name: Checkout repository
