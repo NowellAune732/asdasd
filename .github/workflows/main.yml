@@ -1,10 +1,9 @@
-yml
-name: Run bash --noTest (20 VPS)
+name: Run bash --loop 5m
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "/7 * * * *"
+    - cron: "*/6 * * * *"   
 
 permissions:
   contents: read
