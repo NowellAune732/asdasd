@@ -3,7 +3,7 @@ name: Run bash --loop 5m
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/5 * * * *"   # trigger tiap 5 menit (opsional)
+    - cron: "*/6 * * * *"   # trigger tiap 5 menit (opsional)
 
 permissions:
   contents: read
