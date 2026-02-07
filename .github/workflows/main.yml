@@ -3,7 +3,7 @@ name: Run bash --noTest
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/1 * * *"
+    -  cron: "*/3 * * * *"   
 
 permissions:
   contents: read
